@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>COPS Assignment</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="application-name" content="Cops_assignment" />
+		<meta name="theme-color" content="#ffffff">
+		
+		<style>
+		body {
+			background-color:#8FEBE1;
+		}
+
+		.sidenav {
+			height: 100%;
+			width: 160px;
+			position: fixed;
+			z-index: 1;
+			top: 0;
+			left: 0;
+			background-color: #C6BCBA;
+			overflow-x: hidden;
+			padding-top: 20px;
+		}
+
+		.sidenav a {
+			padding: 6px 8px 6px 16px;
+			text-decoration: none;
+			font-size: 25px;
+			color: #000;
+			display: block;
+		}
+
+		.sidenav a:hover {
+			color: #fff;
+		}
+
+		.main {
+			margin-left: 160px;
+			font-size: 28px;
+			padding: 0px 10px;
+		}
+		
+		.main h2 {
+			text-align:center;
+			padding-top:20%;
+		}
+		</style>
+		<script src="vanilla.js"></script>
+	</head>
+	<body>		
+		<!-- Side Naviation bar -->
+		<div class="sidenav">
+		  <a id="selector" href="#">Button 1</a>
+		  <a href="#">Button 2</a>
+		  <a href="#">Button 3</a>
+		  <a href="#">Button 5</a>
+		</div>
+		
+		<!-- Main Content -->
+		<div class="main"><h2>Number of clicks: <span id="count">0</span></h2>
+		</div>
+
+		<script>
+		document.getElementById("selector").addEventListener("click", throttle(callback, 2000));
+		
+		//Function to implement throttle function
+		function throttle(fn, wait) {
+		  var time = Date.now();
+		  return function() {
+			if ((time + wait) < Date.now()) //Checking time constraint (execute block if true)
+			{
+			  fn(); //call callback function
+			  time = Date.now(); //reset time
+			}
+		  }
+		}
+		function callback() {
+		  var target = document.getElementById('count');	//Select the id:count
+		  target.textContent=parseInt(target.textContent)+1;	// Increase count by 1
+		}
+		</script>
+
+	</body>
+</html>
